@@ -1,7 +1,0 @@
-Api Webhook Người Dùng Script
-
-_Rosie.UrlWebhook = "https://discord.com/api/webhooks/1224736379414773760/0DDWBwNXavrb4vfI1sTpRJfseRVOnHcn6TmK1OeGV8Jnn0icV46dgw9cS0JjoH6G9NW9" ---// Link Webhook Của Bạn
-_Rosie.NameHub = "Dysu Hub" ---// Tên Hub Của Bạn
-_Rosie.Urlimage = "https://gcs.tripi.vn/public-tripi/tripi-feed/img/474086gRc/hinh-nen-anime-phong-canh-hoa-anh-dao-tuyet-dep_033219675.png" ---// Link Ảnh Banner (Nếu Xoá Sẽ Để Ảnh Gốc)
-_Rosie.NameScript = "Dysu Hub" ---// Tên Script
-loadstring(game:HttpGet(('https://raw.githubusercontent.com/ImTienNguyenZ/Backup-Script/main/Api.lua')))()
