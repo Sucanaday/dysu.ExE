@@ -1,0 +1,35 @@
+
+local HttpService = game:GetService("HttpService")
+local webhookUrl = "https://discord.com/api/webhooks/1283329186810826757/8X9kDF7tauMOMeymgVHxTNRhO-8Bjhu-zogcOCeg5-TuE-kaUJJx6hHk7KGtSEJXArY2"  -- Thay thế bằng URL webhook của bạn
+
+-- Hàm để kiểm tra sự xuất hiện của trái ác quỷ
+function checkForDevilFruits()
+    for _, fruit in pairs(game.Workspace.Fruits:GetChildren()) do
+        if fruit:IsA("Model") then
+            return fruit
+        end
+    end
+    return nil
+end
+
+-- Hàm để gửi thông báo đến Discord
+function sendNotificationToDiscord(fruit)
+    local data = {
+        ["content"] = "Trái ác quỷ xuất hiện: " .. fruit.Name .. " tại vị trí (" .. 
+                      fruit.PrimaryPart.Position.X .. ", " .. 
+                      fruit.PrimaryPart.Position.Y .. ", " .. 
+                      fruit.PrimaryPart.Position.Z .. ")"
+    }
+
+    local jsonData = HttpService:JSONEncode(data)
+    HttpService:PostAsync(webhookUrl, jsonData, Enum.HttpContentType.ApplicationJson)
+end
+
+-- Vòng lặp chính để kiểm tra sự xuất hiện của trái ác quỷ
+while true do
+    local fruit = checkForDevilFruits()
+    if fruit then
+        sendNotificationToDiscord(fruit)
+    end
+    wait(1)  -- Kiểm tra mỗi 1 giây
+end
