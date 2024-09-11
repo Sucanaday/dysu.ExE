@@ -1,0 +1,53 @@
+
+-- Farm Level and Auto Collect Devil Fruit Script for Block Fruits
+local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
+local Character = LocalPlayer.Character or LocalPlayer.CharacterAdded:Wait()
+local Workspace = game:GetService("Workspace")
+local Fruits = {"Smoke-Smoke", "Flame-Flame", "Ice-Ice"} -- Example fruit names
+local selectedFruit = nil
+
+-- Function to auto farm level
+function AutoFarm()
+local Enemies = Workspace.Enemies:GetChildren()
+for _, enemy in pairs(Enemies) do
+if enemy:FindFirstChild("Humanoid") and enemy.Humanoid.Health > 0 then
+repeat
+wait()
+LocalPlayer.Character.HumanoidRootPart.CFrame = enemy.HumanoidRootPart.CFrame * CFrame.new(0, 10, 0)
+enemy.Humanoid:TakeDamage(10) -- Adjust damage or use different attack methods
+until enemy.Humanoid.Health <= 0
+end
+end
+end
+
+-- Function to check for fruits and move to them
+function AutoCollectFruit()
+local fruitsFound = Workspace.FruitSpawns:GetChildren()
+for _, fruit in pairs(fruitsFound) do
+if table.find(Fruits, fruit.Name) then
+selectedFruit = fruit
+LocalPlayer.Character.HumanoidRootPart.CFrame = fruit.CFrame
+firetouchinterest(LocalPlayer.Character.HumanoidRootPart, fruit, 0)
+firetouchinterest(LocalPlayer.Character.HumanoidRootPart, fruit, 1)
+wait(0.5)
+return true
+end
+end
+return false
+end
+
+-- Main Loop
+while true do
+-- Auto Farm
+AutoFarm()
+
+-- Auto Collect Fruits
+if AutoCollectFruit() then
+print("Found and attempting to collect fruit: " .. selectedFruit.Name)
+else
+print("No target fruit found. Retrying...")
+end
+
+wait(60) -- Repeat every 60 seconds
+end
