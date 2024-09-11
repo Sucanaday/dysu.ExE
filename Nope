@@ -51,3 +51,42 @@ end
 
 wait(60) -- Repeat every 60 seconds
 end
+---
+-- Flash Attack Script for Block Fruits
+local Players = game:GetService("Players")
+local LocalPlayer = Players.LocalPlayer
+local Character = LocalPlayer.Character or LocalPlayer.CharacterAdded:Wait()
+local Mouse = LocalPlayer:GetMouse()
+
+-- Function to perform flash attack
+function FlashAttack()
+local target = Mouse.Hit.p
+if target then
+Character.HumanoidRootPart.CFrame = CFrame.new(target)
+-- Perform attack here, e.g., use a skill
+local attack = Instance.new("RemoteEvent", Character)
+attack.Name = "RemoteEvent_Attack"
+attack:FireServer()
+wait(0.5)
+end
+end
+
+Mouse.Button1Down:Connect(function()
+FlashAttack()
+end)
+```
+
+-- Auto Click Script for Block Fruits
+local VirtualUser = game:GetService("VirtualUser")
+
+-- Function to auto click
+function AutoClick()
+while true do
+wait(0.1) -- Interval between clicks
+VirtualUser:Button1Down(Vector2.new(0, 0), workspace.CurrentCamera.CFrame)
+VirtualUser:Button1Up(Vector2.new(0, 0), workspace.CurrentCamera.CFrame)
+end
+end
+
+-- Start auto click
+spawn(AutoClick)
