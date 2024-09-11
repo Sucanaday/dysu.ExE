@@ -8,3 +8,15 @@ on:
 jobs:
   notify:
     runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Lua
+      uses: leafo/gh-actions-lua@v8
+
+    - name: Run Lua script
+      run: |
+        lua your_script.lua
+        
