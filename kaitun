@@ -13,24 +13,7 @@
 [+] Không Được Share Hay Crack Mã Nguồn Này Cho Ai! Nếu Không Bạn Sẽ Bị Ban IP Khỏi Website Vĩnh Viễn!
 [+] Chúng Tôi Không Nhận Hỗ Trợ Những Mã Nguồn Miễn Phí, Xin Đừng Bảo Vì Sao. Tạo Ticket Hỗ Trợ Của Website Tại: https://rosieteam.net/dash/ticket
 [+]  Nếu Bạn Edit Source Và Up Web Share Nhớ Obfuscate Script. Nếu Bạn Có Tiền Thì Sử Dụng: Lura.Ph, Luarmor.Net | Nếu Bạn Không Có Tiền Thì Dùng: luaobfuscate.com, MoonSec, 77Fuscate,... Nhé!
-]]
-
-gay = tick()
-print("[NgHuy Hub/Info] Connecting To Server");
-
-print("[NgHuy Hub/Info] Connected To Server"); 
-
-print("[NgHung Hub/Info] Fetching Requirements Data..."); 
-
-print("[NgHuy Hub/Info] Saving Data To Workspace"); 
-
-print("[NgHuy Hub/Info] Authencating..."); 
-wait(.2)
-print("[NgHuy Hub/Info] Authencation Disabled, Loading Script...");
-
-print("[NgHuy Hub/Info] Loaded In "..tostring(tick()-gay).."ms")
-if game.Players.LocalPlayer.Name == "Rip_NgaoGaming"
-end 
+]] 
 game: GetService"RunService".Heartbeat: Connect(function() 
   sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", math.huge) 
   pcall(function() 
